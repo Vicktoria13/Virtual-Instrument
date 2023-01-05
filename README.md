@@ -1,136 +1,138 @@
-# ProjetC_NGUYEN_SYSOUVANH
-## ProjetC ROB3
+# ProjectC_NGUYEN_SYSOUVANH
+## ProjectC ROB3
 
-### Notice d'utilisation 
-
-
-Ceci est notre dépot pour le projet C de ROB3, 2021-2022. Ce projet a été realisé en binôme : Victoria Nguyen et Matthieu Sysouvanh
-
-### Cahier des charges :
-
-Implementation d'une machine virtuelle, dans l'esprit de Pixar. Se base sur la libraire OpenCV pour vision par ordinateur et une caméra webcam, en mouvement via 2 servomoteurs ( 2 degrés de liberté).
+### Instructions for use 
 
 
-**Contient deux dossiers :**
+This is our repository for the ROB3 project C, 2021-2022. This project was realized in binomial: Victoria Nguyen and Matthieu Sysouvanh
 
-1. Projet Imposé : Suivi de couleur
-2. Projet Libre : implementation d'instruments virtuels + jeu similaire a un piano Tiles, basé sur les servomoteurs et le mouvement d'un objet tracké par sa couleur
+### Requirements :
 
-Contient un fichier doc, contenant la documentation html relié a chacun des 2 dossiers pour chaque programme.
-
+Implementation of a virtual machine, in the spirit of Pixar. Based on the OpenCV library for computer vision and a webcam, moving via 2 servomotors (2 degrees of freedom).
 
 
+**Contains two files:**
 
-## Pré Requis et tâches à réaliser pour que le projet fonctionne : 
+1. Imposed project : Color tracking
+2. Free project : implementation of virtual instruments + game similar to a piano Tiles, based on servomotors and the movement of an object tracked by its color
+
+Contains a doc file, containing the html documentation linked to each of the 2 folders for each program.
+
+
+
+
+## Requirements and tasks to be done for the project to work: 
  
- - avoir la carte Arch Pro Linux + deux servomoteurs + une webcam reliée aux servomoteurs.
- - Etre dans un environnement sans trop de lumière, ne pas être à contre jour.
- - Avoir la dernière version d'OPEN CV, disponible via ce lien : https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html
- - Pour que les servomoteurs fonctionnent, brancher la carte MBED et mettre le fichier binaire situé dans le dossier _fichier_binaire_ dans la carte. Attendez que la LED clignote, signe que le code est bien mis dans la carte.
- - Pour le projet Libre : il est nécessaire d'installer la librairie SDL2 , à telecharger via ce lien :
+ - Have the Arch Pro Linux board + two servo motors + a webcam connected to the servo motors.
+ - To be in an environment without too much light, not to be against the light.
+ - Have the latest version of OPEN CV, available via this link: https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html
+ - To make the servomotors work, plug the MBED card and put the binary file located in the folder _binary_file_ in the card. Wait until the LED blinks, sign that the code is well put in the card.
+ - For the Free project : it is necessary to install the SDL2 library, to download via this link :
  https://devopssec.fr/article/telechargement-compilation-projet-sdl#begin-article-section
- ainsi que la bibliotheque SDL_Mixer, afin de pouvoir avoir le son. Ces librairies doivent être installées dans le fichier path de l'environnement utilisateur pour que le makefile fonctionne.
- SDL_mixer s'installe en suivant les commandes https://zoomadmin.com/HowToInstall/UbuntuPackage/libsdl2-mixer-2.0-0
+ and the SDL_Mixer library, in order to have the sound. These libraries must be installed in the path file of the user environment for the makefile to work.
+ SDL_mixer is installed by following the commands https://zoomadmin.com/HowToInstall/UbuntuPackage/libsdl2-mixer-2.0-0
  
- Remarque : en cas de non reconnaissance des fichiers SDL2 et SDL_Mixer, modifier le `#include` dans les entêtes des programmes `#include` pour que le compilateur ait le bon chemin. 
- Mettre le fichier `SDL_Mixer.h` dans le même dossier que les .h de SDL2.
- 
- 
- 
-**A la fin du README se trouve un lien vidéo permettant d'avoir une démonstration visuelle du projet**
-
- 
-# PROJET IMPOSE :
- 
- **Pour le lancer, ouvrir un terminal dans l'emplacement du fichier .../projetImpose , puis lancer `make` pour compiler, puis `./main` pur executer.**
- **L'éxécutable est le fichier main**. 
+ Note: if the SDL2 and SDL_Mixer files are not recognized, change the `#include` in the program headers so that the compiler has the right path. 
+ Put the `SDL_Mixer.h` file in the same folder as the .h of SDL2.
  
  
- Celui_ci s'organise en un `fichier.cpp` et un makeFile.   Pour detecter une couleur, il faut cliquer sur l'image affichée sur l'écran. L'endroit (=pixel) où l'on clique
- sera tracké par le programme. Si, lors du tracking, on se deplace dans des points où la luminosité change, il faut re-appuyer sur l'endroit de l'écran de la couleur trackée.
  
- Si on part trop à droite, alors la caméra, via les servomoteurs, se deplacera pour suivre l'objet tracké.
- 
- **A retenir** : il est important, pour que l'algorithme sache quelle couleur tracker, de cliquer sur l'image l'object à tracker. Par exemple, si on veut tracker un ballon rouge, il 
- faut au demarrage :
- 
- 1. placer le ballon dans le champ de vision de la caméra
- 2. cliquer sur ballon dans le retour image
- 3. un Rectangle de la couleur du pixel sur lequel on a cliqué s'affiche et entoure l'objet tracké de la couleur trackée
- 4. Bouger l'objet : le rectangle se deplace pour suivre l'image
- Si, lors du déplacement, le rectangle ne suit plus le ballon, c'est que la luminosité a changé depuis le moment où l'on a cliqué. Il faut alors reclique sur la position courante
- du ballon , ect...
- 
- 
+**At the end of the README there is a video link to have a visual demonstration of the project**.
 
  
-# PROJET Libre
+# PROJECT REQUIRES :
  
- - Lorsque le programme se lance, il y a une fenetre graphique : c'est le menu du jeu. On a le choix entre un mode manuel (=freeestyle) et un mode jeu vidéo. 
-
+ **To launch it, open a terminal in the location of the file .../projectImpose , then launch `make` to compile, then `./main` to execute.**
+ **The executable is the main file**. 
  
  
-## MODE Freestyle :
+ This one is organized in a `.cpp file` and a makeFile.   To detect a color, you have to click on the image displayed on the screen. The place (=pixel) where you click
+ will be tracked by the program. If, during the tracking, you move to points where the brightness changes, you have to click again on the place on the screen where the color is tracked.
  
-Lors du lancement du programme, une fenetre liée a la webcam s'affiche. En arrière plan, on voit un piano à 12 touches, ainsi que 3 cases jouant un son particulier. Pour commencer , il faut dans l'ordre :
-
-1. Prendre un objet avec une couleur peu présente dans l'environnement extérieur, afin de limiter les problèmes de detection. Dans l'exemple, on utilise un feutre avec un capuchon rouge. Utiliser un objet de couleur X, possedant une surface petite, afin d'etre précis. Un stylo convient parfaitement. 
-
-2. Deux fenetres s'afficheront à l'éxécution : une fenêtre est le rendu avec les instruments et la detection, l'autre est la fenetre ou il faut choisir la couleur a tracker. Cela se base sur le me principe que le projet imposé ; on clique avec la souris sur la couleur à detecter. Un contour vert s'affiche alors selon le contour de la forme de couleur detectée. N'hesiter pas à cliquer plusieurs fois au même endroit, en changeant l'orientation, afin que le contour vert n'entoure bien uniquement que l'objet de couleur trackée. (sur la photo, uniquement le bouchon du stylo).
-
-3. une fois le choix de la couleur faite, on peut se balader dans l'écran via le centre du contour crée ; dès lors que ce centre passe dans l'une des 12 touches du piano, ou dans l'un des 3 cases de couleur, le son correspondant est joué. Le rythme est similaire pour chaque son, permettant un rendu sonore agréable. Certains sons sont courts (une note), d'autre sont plus longs ( batterie).
-
-4. Un rectangle rouge entoure les instruments virtuels : si le centre de l'objet tracké sort par la gauche où par la droite, alors le servomoteur bougera en conséquence, afin de rester aligné sur l'utilisateur.
-
-# Important ! 
-**Pour que les sons fonctionnent, il est nécessaire de modifier les chemins d'accès de chaque son : Pour cela , ouvrir le fichier `play.cpp`  et modifier la ligne 91 avec le path absolu pour arriver jusqu'au dossier. Ce détail est très important pour qu'il y ait lecture des fichiers sons !!**
-
-
-### AVANT :
- `char chemin_acces[200]="/home/victoria/Bureau/ProjetROB3/ProjetC_NGUYEN_SYSOUVANH/projetLibre/samples piano/";`
-
-### APRES 
- `char chemin_acces[200]=".....A REMPLACER...../ProjetC_NGUYEN_SYSOUVANH/projetLibre/samples piano/";`
-
-
-
-
-
-
+ If you go too far to the right, then the camera, via the servomotors, will move to follow the tracked object.
+ 
+ **Remember**: it is important, so that the algorithm knows which color to track, to click on the image the object to track. For example, if you want to track a red balloon, you 
+ at startup :
+ 
+ 1. place the balloon in the camera's field of view
+ 2. click on the balloon in the image feedback
+ 3. a rectangle of the color of the pixel you clicked on is displayed and surrounds the tracked object with the tracked color
+ 4. Move the object : the rectangle moves to follow the image
+ If, when moving the object, the rectangle does not follow the balloon anymore, it means that the luminosity has changed since the moment you clicked. You must then click again on the current position
+ of the balloon, ect...
+ 
+ 
 
  
-### MODE JEU VIDEO
+# PROJECT Free
  
-En lançant ce mode la fênetre de menu se ferme et est remplacée par la fenêtre de jeu. Celle ci comporte boutons ainsi qu'un compteur de score et de vies. 
+ - When the program starts, there is a graphic window : it is the menu of the game. You can choose between a manual mode (=freeestyle) and a video game mode. 
 
-Cliquez dans un premier temps sur l'objet de couleur à suivre dans le retour caméra. Un éclairage uniforme sans reflets ni contrejour est préférable. Vous pouvez à tout moment re-cliquer sur l'écran pour réinitialiser la couleur à détecter.
+ 
+ 
+ 
+## Freestyle MODE :
+ 
+When launching the program, a window linked to the webcam is displayed. In the background, we see a piano with 12 keys, as well as 3 boxes playing a particular sound. To begin, you must in order:
 
-Une fois l'objet sélectionné un cercle apparait en son centre. Le but du jeu est de s'en servir comme curseur pour activer les boutons qui passent au jaune.
+1. Take an object with a color not very present in the external environment, in order to limit the problems of detection. In the example, we use a felt pen with a red cap. Use an object of color X, with a small surface, to be precise. A pen is a good choice. 
 
-Si vous y arrivez à temps vous marquerez des points.
-Si vous n'y arrivez par vous perdrez une vie.
+2. Two windows will be displayed at runtime: one window is the rendering with instruments and detection, the other is the window where you have to choose the color to track. This is based on the same principle as the imposed project; you click with the mouse on the color to detect. A green outline is then displayed according to the outline of the detected color shape. Do not hesitate to click several times on the same place, changing the orientation, so that the green outline surrounds only the object of the tracked color. (on the picture, only the cap of the pen).
 
-La caméra pourra bouger aléatoirement entre 3 positions, vous devrez alors vous déplacer pour rester dans le cadre et garder le rythme.
+3. once the choice of the color is made, you can move around the screen via the center of the created contour; as soon as this center passes in one of the 12 keys of the piano, or in one of the 3 colored boxes, the corresponding sound is played. The rhythm is similar for each sound, allowing a pleasant sound rendering. Some sounds are short (one note), others are longer (drums).
 
-La difficulté augmente graduellement avec le score, les événements s'enchainent plus vite et vous avez moins de temps pour appuyer sur les boutons.
+4. A red rectangle surrounds the virtual instruments: if the center of the tracked object goes out from the left or from the right, then the servo will move accordingly, in order to stay aligned with the user.
 
-Le jeu s'arrête une fois toutes les vies épuisées ou lors d'un appui sur `echap`.
+# Important! 
+**For the sounds to work, it is necessary to modify the path of each sound: To do this, open the file `play.cpp` and modify line 91 with the absolute path to get to the folder. This detail is very important for the playback of the sound files !
 
 
-#### PARAMETRES:
+### BEFORE :
+ `char path_acces[200]="/home/victoria/Bureau/ProjetROB3/ProjetC_NGUYEN_SYSOUVANH/projetLibre/samples piano/";`
 
-Plusieurs variables globales gèrent des paramètres adaptables du jeu. 
-La temporisation des évènements dépends du nombre de ticks/s de votre sytème, aussi la vitesse du jeu est proportionnelle au #define TEMPO
+### AFTER 
+ char path_acces[200]=".....A REPLACE...../ProjetC_NGUYEN_SYSOUVANH/projetLibre/samples piano/";`
 
-Le nombre de vies est géré par `#define VIES`
 
-**Important  !: Le programme nécessite que la caméra et les servos moteurs soient reliés à l'ordinateur. Le choix du port de la caméra se fait en éditant la variable #define ID et le chemin menant au port série doit être spécifié correctement si vous n'utilizez pas `/dev/ttyACM0`.**
+
+
+
+
+
+ 
+### VIDEO GAME MODE
+ 
+When starting this mode the menu window closes and is replaced by the game window. The game window has buttons and a score and life counter. 
+
+First click on the colored object to follow in the camera return. Uniform lighting without reflections or backlighting is best. You can click on the screen again at any time to reset the color to be detected.
+
+Once the object is selected, a circle appears in its center. The goal of the game is to use it as a cursor to activate the buttons that turn yellow.
+
+If you manage to do this in time you will score points.
+If you don't, you will lose a life.
+
+The camera can move randomly between 3 positions, so you will have to move to stay in the frame and keep the pace.
+
+The difficulty increases gradually with the score, the events follow each other faster and you have less time to press the buttons.
+
+The game stops when all lives are used up or when `echap` is pressed.
+
+
+#### SETTINGS:
+
+Several global variables manage adaptable game parameters. 
+The timing of events depends on the number of ticks/s of your system, so the speed of the game is proportional to the #define TEMPO
+
+The number of lives is managed by `#define VIES`.
+
+**Important: The program requires the camera and servo motors to be connected to the computer. The choice of the camera port is made by editing the #define ID variable and the path to the serial port must be specified correctly if you are not using `/dev/ttyACM0`.
 
 
 
 
 # Illustration
 
-**Afin d'avoir un exemple concret d'utilisation, cliquez sur ce [lien Youtube](https://www.youtube.com/watch?v=3uba5YjnqWo) afin de bien comprendre comment marche le programme.**
+**In order to have a concrete example of use, click on this [Youtube link](https://www.youtube.com/watch?v=3uba5YjnqWo) to understand how the program works.**
+
 
 
