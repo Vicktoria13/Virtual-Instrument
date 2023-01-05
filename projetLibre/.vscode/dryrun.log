@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/victoria/Bureau/ProjetROB3/ProjetC_NGUYEN_SYSOUVANH/projetLibre'
+g++ -c main.cpp -lSDL2main -lSDL2 -lSDL2_mixer  `pkg-config --cflags --libs opencv4 `
+g++ -c play.cpp -lSDL2main -lSDL2 -lSDL2_mixer  `pkg-config --cflags --libs opencv4 `
+g++ -o main main.o play.o -lSDL2main -lSDL2 -lSDL2_mixer `pkg-config --cflags --libs opencv4 `
+make: Leaving directory '/home/victoria/Bureau/ProjetROB3/ProjetC_NGUYEN_SYSOUVANH/projetLibre'
+ 
